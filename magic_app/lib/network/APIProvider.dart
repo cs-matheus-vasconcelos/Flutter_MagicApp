@@ -11,7 +11,7 @@ class APIProvider {
 
   APIProvider([this._baseURL ,this._client]) {
     _client = _client ?? http.Client();
-    _baseURL = _baseURL ?? "https://api.magicthegathering.io";
+    _baseURL = _baseURL ?? "https://api.magicthegathering.io/v1";
   }
 
   Future<dynamic> get(String path) async {

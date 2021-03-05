@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:magic_app/cardsList/viewModel/CardListViewModel.dart';
+import 'package:provider/provider.dart';
 import 'cardsList/view/CardList.dart';
 
 void main() {
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CardList(),
+      home: ChangeNotifierProvider(
+        create: (context) => CardListViewModel(), 
+        child: CardList(),
+        ),
     );
   }
 }
