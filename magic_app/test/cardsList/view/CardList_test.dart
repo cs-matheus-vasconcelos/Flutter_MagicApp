@@ -6,7 +6,6 @@ import 'package:magic_app/network/NetworkResponse.dart';
 import 'package:magic_app/cardsList/model/Card.dart' as magic;
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
-import '../../Helpers/Constants/Constants.dart';
 import '../../Helpers/Utils.dart';
 
 class MockCardListViewModel extends Mock implements CardListViewModel {}
