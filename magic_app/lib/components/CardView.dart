@@ -17,14 +17,16 @@ class CardView extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Center(child: CircularProgressIndicator()),
-        Center(
-          child: FadeInImage.memoryNetwork(
-            placeholder: kTransparentImage,
-            image: _card.imageURL,
-          ),
-        ),
+        Center(child: networkImage()),
       ],
     );
+  }
+
+  Widget networkImage() {
+    return FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: _card.imageURL,
+        );
   }
 
   Widget defaultImage() {

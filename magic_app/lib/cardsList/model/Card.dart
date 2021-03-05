@@ -2,6 +2,8 @@ class Card {
   String name;
   String imageURL;
 
+  Card(this.name, this.imageURL);
+
   Card.fromJSON(Map<String, dynamic> json) : 
   name = json["name"], 
   imageURL = json["imageUrl"];
