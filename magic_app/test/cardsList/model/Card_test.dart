@@ -5,7 +5,7 @@ import '../../Helpers/Constants/Constants.dart';
 
 void main() {
 
-  group("Card", () {
+  group("Card -", () {
     test("init from JSON", () {
       final card = Card.fromJSON(json.decode('{"name": "A card", "imageUrl": "$testBaseURL"}'));
       expect(card.name, "A card");
@@ -13,7 +13,7 @@ void main() {
     });
   });
 
-  group("Deck", () {
+  group("Deck -", () {
     test("init from JSON", () {
       final deck = Deck.fromJSON(json.decode('{"cards": [{"name": "A card", "imageUrl": "$testBaseURL"}]}'));
 
