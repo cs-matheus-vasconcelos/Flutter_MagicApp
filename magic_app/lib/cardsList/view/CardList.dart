@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:magic_app/cardsList/viewModel/CardListViewModel.dart';
 import 'package:magic_app/cardsList/model/Card.dart' as magic;
 import 'package:magic_app/components/CardView.dart';
@@ -12,6 +13,16 @@ class CardList extends StatefulWidget {
 
 class _CardListState extends State<CardList> {
 
+  CardListViewModel _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _viewModel.fetchCards();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,22 +32,19 @@ class _CardListState extends State<CardList> {
   }
 
   Widget buildBody() {
-    final viewModel = Provider.of<CardListViewModel>(context);
-    switch (viewModel.responseController.status) {
+    _viewModel = Provider.of<CardListViewModel>(context);
+    switch (_viewModel.responseController.status) {
       case Status.LOADING:
         return Center(child: CircularProgressIndicator());
       
       case Status.ERROR:
-        return Center(child: Text(viewModel.responseController.message));
+        return Center(child: Text(_viewModel.responseController.message));
 
       case Status.COMPLETED:
         return cardsList();
 
       default:
-        // viewModel.fetchCards();
-        return Center(child: TextButton(child: Text("Request"), onPressed: () {
-          viewModel.fetchCards();
-        },));
+        return Center(child: Text("initial"));
     }
   }
 
@@ -53,8 +61,7 @@ class _CardListState extends State<CardList> {
   }
 
   List<CardView> cards() {
-    final viewModel = Provider.of<CardListViewModel>(context);
-    final List<magic.Card> cards = viewModel.responseController.data;
+    final List<magic.Card> cards = _viewModel.responseController.data;
     return cards.map((card) => CardView(card)).toList();
   }
 
