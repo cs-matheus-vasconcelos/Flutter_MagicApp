@@ -1,6 +1,7 @@
 # magic_app
+[![Run CI](https://github.com/cs-matheus-vasconcelos/Flutter_MagicApp/actions/workflows/CI.yml/badge.svg)](https://github.com/cs-matheus-vasconcelos/Flutter_MagicApp/actions/workflows/CI.yml)
 
-A new Flutter project.
+A new Flutter project to validate Dart with a simple Magic card list app.
 
 ## Getting Started
 
