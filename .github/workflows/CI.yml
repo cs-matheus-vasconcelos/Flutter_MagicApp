@@ -18,9 +18,18 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.0.0'
-          
-      - run: dart --version
-      - run: flutter --version
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build apk
+
+      - name: Dart Version
+        run: dart --version
+      
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Pub get
+        run: flutter pub get
+
+      - name: Test
+        run: flutter test
+
+      - name: Build
+        run: flutter build apk
